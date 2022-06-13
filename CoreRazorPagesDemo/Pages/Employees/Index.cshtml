@@ -1,0 +1,48 @@
+﻿@page
+@model CoreRazorPagesDemo.Pages.Employees.IndexModel
+@{
+}
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employee Details</h1>
+
+<div style="padding-bottom:2%">
+    <p>
+        <a asp-page="Create" class="btn btn-secondary" style="float:right">Create Employee</a>
+    </p>
+</div>
+<br />
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr style="text-align: center;">
+                <th>@Html.DisplayNameFor(model => model.Employees[0].Id)</th>
+                <th>@Html.DisplayNameFor(model => model.Employees[0].FirstName)</th>
+                <th>@Html.DisplayNameFor(model => model.Employees[0].LastName)</th>
+                <th>@Html.DisplayNameFor(model => model.Employees[0].Email)</th>
+                <th>@Html.DisplayNameFor(model => model.Employees[0].Gender)</th>
+                <th>@Html.DisplayNameFor(model => model.Employees[0].Salary)</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in Model.Employees)
+            {
+            <tr style="text-align:center">
+                <td>@emp.Id</td>
+                <td>@emp.FirstName</td>
+                <td>@emp.LastName</td>
+                <td>@emp.Email</td>
+                <td>@emp.Gender</td>
+                <td>@emp.Salary</td>
+                <td><a asp-page="Edit" asp-route-data="@emp.Id" class="btn btn-primary">Edit</a></td>
+                <td><a asp-page="Delete" asp-route-id="@emp.Id" class="btn btn-danger">Delete</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

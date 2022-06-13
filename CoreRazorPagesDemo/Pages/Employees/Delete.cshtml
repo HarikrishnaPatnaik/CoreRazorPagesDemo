@@ -1,0 +1,49 @@
+﻿@page
+@model CoreRazorPagesDemo.Pages.Employees.DeleteModel
+@{
+}
+
+<h1>Delete Employee</h1>
+<div>
+    <div class="col-6">
+        <form id="frmDeleteEmployee" method="post">
+            <div class="form-group">
+                @Html.AntiForgeryToken()
+                <div>
+                    <label asp-for="DeleteEmployee.Id" class="control-label"></label>
+                    <input readonly asp-for="DeleteEmployee.Id" class="form-control" id="txtDeleteId"/>
+                </div>
+                <div>
+                    <label asp-for="DeleteEmployee.FirstName" class="control-label"></label>
+                    <input readonly asp-for="DeleteEmployee.FirstName" class="form-control" id="txtDeleteFName"/>
+                </div>
+                <div>
+                    <label asp-for="DeleteEmployee.LastName" class="control-label"></label>
+                    <input readonly asp-for="DeleteEmployee.LastName" class="form-control" id="txtDeleteLName"/>
+                </div>
+                <div>
+                    <label asp-for="DeleteEmployee.Email" class="control-label"></label>
+                    <input readonly asp-for="DeleteEmployee.Email" class="form-control" id="txtDeleteEmail"/>
+                </div>
+                <div>
+                    <label asp-for="DeleteEmployee.Gender" class="control-label"></label>
+                    <input readonly asp-for="DeleteEmployee.Gender" class="form-control" id="txtDeleteGender"/>
+                </div>
+                <div>
+                    <label asp-for="DeleteEmployee.Salary" class="control-label"></label>
+                    <input readonly asp-for="DeleteEmployee.Salary" class="form-control" id="txtDeleteSalary"/>
+                </div>
+            </div>
+            <div>
+                <a asp-page="Index" class="float-left">Back to List</a>
+                <input type="submit" class="btn btn-danger float-right" value="Delete" onclick="return deleteEmployee(@ViewData["EmpID"]);" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/validationFunction.js"></script>
+}
